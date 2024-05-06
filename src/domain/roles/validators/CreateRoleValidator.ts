@@ -15,4 +15,14 @@ export class RoleValidator {
       );
     }
   }
+
+  static id(id: string) {
+    const validate = z.string().uuid('Id inválido.').safeParse(id);
+
+    if (!validate.success)
+      throw new AppError(
+        validate.error.errors.map((e) => e.message),
+        409,
+      );
+  }
 }
