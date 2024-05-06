@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import 'dotenv/config';
 import 'express-async-error';
 import express, { Express } from 'express';
 import { startServer } from './shared/http/server';
+import '@shared/containers';
 
 const app = express();
 startServer(app);
