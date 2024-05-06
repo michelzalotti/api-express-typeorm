@@ -1,3 +1,4 @@
+import { AppError } from '@shared/errors/AppError';
 import z from 'zod';
 
 export class RoleValidator {
@@ -8,7 +9,10 @@ export class RoleValidator {
       .safeParse(name);
 
     if (!validate.success) {
-      throw new Error(validate.error.errors[0].message);
+      throw new AppError(
+        validate.error.errors.map((e) => e.message),
+        409,
+      );
     }
   }
 }

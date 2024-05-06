@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-import 'express-async-error';
+import 'express-async-errors';
 import express, { Express } from 'express';
 import { router } from '@shared/http/routers';
+import { AppErrorMiddleware } from '@middlewares/AppErrorMiddleware';
 import { startServer } from './shared/http/server';
 import '@shared/containers';
 
@@ -24,6 +25,7 @@ class Main {
 
   private _routes() {
     this._app.use(router);
+    this._app.use(AppErrorMiddleware.handle);
   }
 }
 
