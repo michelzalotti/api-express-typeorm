@@ -8,7 +8,7 @@ export class AppErrorMiddleware {
         return res.status(err.code).json({ message: err.message });
       }
 
-      return res.status(500).json({ message: 'Erro interno do servidor.' });
+      return res.status(500).json({ message: err.message });
     }
 
     next();

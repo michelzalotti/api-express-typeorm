@@ -30,8 +30,7 @@ export class RoleRepository implements IRoleRepository {
     skip: number,
   ): Promise<RolesPaginateDTO> {
     const [items, totalItems] = await this._repository
-      .createQueryBuilder('r')
-      .leftJoinAndSelect('r.role', 'role')
+      .createQueryBuilder()
       .take(take)
       .skip(skip)
       .getManyAndCount();
