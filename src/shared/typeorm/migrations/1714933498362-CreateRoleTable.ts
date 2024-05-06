@@ -12,7 +12,7 @@ export class CreateRoleTable1714933498362 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'role',
+            name: 'name',
             type: 'string',
             isUnique: true,
           },
