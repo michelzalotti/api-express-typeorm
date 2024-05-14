@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateRoleService } from '../services/CreateRoleService';
-import { RoleValidator } from '../validators/CreateRoleValidator';
+import { RoleValidator } from '../validators/RoleValidator';
 
 export class CreateRoleController {
   async handle(req: Request, res: Response): Promise<Response> {

@@ -25,4 +25,19 @@ export class RoleValidator {
         409,
       );
   }
+
+  static update(id: string, name: string) {
+    const validate = z
+      .object({
+        id: z.string().uuid('O id não é válido.'),
+        name: z.string().min(4, 'O nome deve possuir no mínimo 4 caracteres.'),
+      })
+      .safeParse({ id, name });
+
+    if (!validate.success)
+      throw new AppError(
+        validate.error.errors.map((e) => e.message),
+        409,
+      );
+  }
 }
