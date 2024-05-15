@@ -11,7 +11,7 @@ import {
 import { v4 as uuid } from 'uuid';
 
 @Entity('users')
-export class Users {
+export class User {
   @PrimaryColumn()
   id: string;
 
