@@ -1,4 +1,5 @@
 import { Role } from '@domain/roles/entity/Role';
+import { Exclude } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -27,6 +28,7 @@ export class User {
   @Column()
   isAdmin: boolean;
 
+  @Exclude()
   @Column()
   password: string;
 

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 import { CreateUserService } from '../services/CreateUserService';
 import { CreateUserDTO } from '../dto/CreateUserDTO';
 import { UserValidator } from '../validators/UserValidator';
@@ -19,6 +20,6 @@ export class CreateUserController {
       roleId,
     );
 
-    return res.status(201).json(data);
+    return res.status(201).json(instanceToInstance(data));
   }
 }
