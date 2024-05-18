@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { container } from 'tsyringe';
+import { AuthorizationMiddleware } from '@middlewares/AuthorizationMiddleware';
 import { CreateRoleController } from '../controllers/CreateRoleController';
 import { ReadRoleController } from '../controllers/ReadRoleController';
 import { ListRolesController } from '../controllers/ListRolesController';
@@ -13,6 +14,7 @@ const listRolesController = container.resolve(ListRolesController);
 const updateRoleController = container.resolve(UpdateRoleController);
 const deleteRoleController = container.resolve(DeleteRoleController);
 
+rolesRouter.use(AuthorizationMiddleware.authorizate);
 rolesRouter.post('/', (req, res) => createRoleController.handle(req, res));
 rolesRouter.get('/', (req, res) => listRolesController.handle(req, res));
 rolesRouter.get('/:id', (req, res) => readRoleController.handle(req, res));
