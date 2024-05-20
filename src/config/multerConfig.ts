@@ -1,10 +1,16 @@
 import path from 'node:path';
+import fs from 'node:fs';
 import multer, { MulterError } from 'multer';
 import { Request } from 'express';
 
 const storage: multer.StorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     const folder = path.resolve('uploads', 'avatar');
+
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
+
     return cb(null, folder);
   },
   filename: (req, file, cb) => {

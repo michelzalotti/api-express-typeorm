@@ -12,8 +12,8 @@ const createUserController = container.resolve(CreateUserController);
 const listUsersController = container.resolve(ListUsersController);
 const uploadAvatarController = container.resolve(UploadAvatarController);
 
-usersRouter.use(AuthorizationMiddleware.authorizate);
 usersRouter.post('/', (req, res) => createUserController.handle(req, res));
+usersRouter.use(AuthorizationMiddleware.authorizate);
 usersRouter.get('/', (req, res) => listUsersController.handle(req, res));
 usersRouter.patch(
   '/profile/avatar',
