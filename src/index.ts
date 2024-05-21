@@ -1,3 +1,4 @@
+import path from 'node:path';
 import 'reflect-metadata';
 import 'dotenv/config';
 import 'express-async-errors';
@@ -21,6 +22,7 @@ class Main {
 
   private _middlewares() {
     this._app.use(express.json());
+    this._app.use('/files', express.static(path.resolve('uploads', 'avatar')));
   }
 
   private _routes() {

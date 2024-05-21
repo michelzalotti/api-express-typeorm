@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { instanceToInstance } from 'class-transformer';
 import { AppError } from '@shared/errors/AppError';
 import { UploadAvatarService } from '../services/UploadAvatarService';
 
@@ -13,6 +14,6 @@ export class UploadAvatarController {
     const uploadAvatarService = container.resolve(UploadAvatarService);
     const data = await uploadAvatarService.execute(userId, filename);
 
-    return res.status(201).json(data);
+    return res.status(201).json(instanceToInstance(data));
   }
 }
