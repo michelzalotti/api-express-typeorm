@@ -49,7 +49,10 @@ export class UserRepository implements IUserRepository {
   }
 
   findById(id: string): Promise<User | null> {
-    return this._repository.findOneBy({ id });
+    return this._repository.findOne({
+      where: { id },
+      relations: { role: true },
+    });
   }
 
   findByEmail(email: string): Promise<User | null> {
